@@ -3,18 +3,18 @@ const LANDING_HTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cool the text you shouldn't send - before you send it.">
+  <meta name="description" content="Cool the text you meant to send - before you send it.">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paste Drops" />
   <meta property="og:title" content="Paste Drops" />
-  <meta property="og:description" content="Cool the text you shouldn't send - before you send it." />
+  <meta property="og:description" content="Cool the text you meant to send - before you send it." />
   <meta property="og:url" content="https://pastedrops.com/" />
   <meta property="og:image" content="https://pastedrops.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Paste Drops" />
-  <meta name="twitter:description" content="Cool the text you shouldn't send - before you send it." />
+  <meta name="twitter:description" content="Cool the text you meant to send - before you send it." />
   <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
   <title>Paste Drops - Cools down your angry texts</title>
   <style>
@@ -83,6 +83,8 @@ const LANDING_HTML = `<!DOCTYPE html>
       max-width: 250px;
       height: auto;
       filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .logo-mascot-group {
@@ -91,10 +93,33 @@ const LANDING_HTML = `<!DOCTYPE html>
       transform-origin: center;
     }
 
+    .logo-svg.tickle .logo-mascot-group {
+      animation: floatBob 6s infinite ease-in-out, tickleBounce 0.42s ease-out forwards;
+    }
+
+    @keyframes tickleBounce {
+      0%   { transform: translateY(0) scale(1) rotate(0deg); }
+      17%  { transform: translateY(-2.5%) scale(1.18) rotate(-10deg); }
+      40%  { transform: translateY(-2.5%) scale(1.015) rotate(10deg); }
+      60%  { transform: translateY(-2.5%) scale(1.015) rotate(-6deg); }
+      78%  { transform: translateY(-2.5%) scale(1.015) rotate(4deg); }
+      100% { transform: translateY(-2.5%) scale(1.015) rotate(0deg); }
+    }
+
     .logo-mascot-eye {
       transform-box: fill-box;
       transform-origin: center;
       animation: eyeBlink 5s infinite ease-in-out;
+    }
+
+    /* Asleep: droopy lid, slower bob */
+    .logo-svg.asleep .logo-mascot-eye {
+      animation: none;
+      transform: scaleY(0.18);
+      transition: transform 0.32s ease;
+    }
+    .logo-svg.asleep .logo-mascot-group {
+      animation: floatBob 9s infinite ease-in-out; /* slower breathing */
     }
 
     @keyframes floatBob {
@@ -112,6 +137,50 @@ const LANDING_HTML = `<!DOCTYPE html>
       }
       92%, 96% {
         transform: scaleY(0.05);
+      }
+    }
+
+    /* Zzz rising z's */
+    .zzz-wrap {
+      position: absolute;
+      top: 18%;
+      left: 56%;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .zzz-wrap.visible { opacity: 1; }
+
+    .zzz-wrap .z {
+      position: absolute;
+      color: #fff;
+      font-weight: 800;
+      font-style: italic;
+      opacity: 0;
+    }
+    .zzz-wrap.visible .z {
+      animation: zFloat 1.9s ease-out infinite;
+    }
+    .zzz-wrap.visible .z:nth-child(1) { font-size: 13px; animation-delay: 0s; }
+    .zzz-wrap.visible .z:nth-child(2) { font-size: 17px; animation-delay: 0.64s; }
+    .zzz-wrap.visible .z:nth-child(3) { font-size: 22px; animation-delay: 1.28s; }
+
+    @keyframes zFloat {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(0.6);
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(22px, -52px) rotate(8deg) scale(1.2);
       }
     }
 
@@ -148,6 +217,24 @@ const LANDING_HTML = `<!DOCTYPE html>
 
     .cta-button:active {
       transform: translateY(0) scale(0.98);
+    }
+
+    .cta-button.disabled {
+      background: linear-gradient(135deg, #555 0%, #444 50%, #555 100%);
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+      box-shadow: none;
+    }
+
+    .coming-soon {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(252, 251, 249, 0.45);
     }
   </style>
 </head>
@@ -191,10 +278,84 @@ const LANDING_HTML = `<!DOCTYPE html>
         </g>
     </svg>
 
-    <div class="tagline">the text you shouldn't send.</div>
+    <div class="zzz-wrap" id="zzz"><span class="z">z</span><span class="z">z</span><span class="z">z</span></div>
 
-    <a href="/getapp" id="btn-get-app" class="cta-button">Get the app</a>
+    <div class="tagline">the text you meant to send.</div>
+
+    <span id="btn-get-app" class="cta-button disabled">Get the app</span>
+    <span class="coming-soon">Coming soon</span>
   </div>
+
+  <script>
+    (function () {
+      var svg = document.querySelector('.logo-svg');
+      var zzz = document.getElementById('zzz');
+      var tickleSounds = ['/tickle1.mp3', '/tickle2.mp3', '/tickle3.mp3', '/tickle4.mp3'];
+      var snoreAudio = null;
+      var playing = false;
+      var asleep = false;
+      var idleTimer = null;
+      var IDLE_MS = 15000;
+
+      function sleep() {
+        if (asleep) return;
+        asleep = true;
+        svg.classList.add('asleep');
+        zzz.classList.add('visible');
+        try {
+          if (!snoreAudio) {
+            snoreAudio = new Audio('/snore.mp3');
+            snoreAudio.loop = true;
+            snoreAudio.volume = 0.35;
+          }
+          snoreAudio.currentTime = 0;
+          snoreAudio.play();
+        } catch (e) {}
+      }
+
+      function wake() {
+        if (!asleep) return;
+        asleep = false;
+        svg.classList.remove('asleep');
+        zzz.classList.remove('visible');
+        try { if (snoreAudio) snoreAudio.pause(); } catch (e) {}
+      }
+
+      function resetIdle() {
+        if (idleTimer) clearTimeout(idleTimer);
+        idleTimer = setTimeout(sleep, IDLE_MS);
+      }
+
+      // Start the idle countdown on load
+      resetIdle();
+
+      svg.addEventListener('click', function () {
+        var wasSleeping = asleep;
+        wake();
+        resetIdle();
+
+        // Play a random tickle bloop
+        try {
+          var audio = new Audio(tickleSounds[Math.floor(Math.random() * tickleSounds.length)]);
+          audio.volume = 0.7;
+          audio.play();
+        } catch (e) {}
+
+        // Trigger the tickle animation
+        if (playing) {
+          svg.classList.remove('tickle');
+          void svg.offsetWidth; // reflow to restart animation
+        }
+        svg.classList.add('tickle');
+        playing = true;
+
+        setTimeout(function () {
+          svg.classList.remove('tickle');
+          playing = false;
+        }, 420);
+      });
+    })();
+  </script>
 </body>
 </html>`;
 
@@ -206,14 +367,14 @@ const APP_HTML = `<!DOCTYPE html>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paste Drops" />
   <meta property="og:title" content="Paste Drops" />
-  <meta property="og:description" content="Cool the text you shouldn't send - before you send it." />
+  <meta property="og:description" content="Cool the text you meant to send - before you send it." />
   <meta property="og:url" content="https://pastedrops.com/getapp" />
   <meta property="og:image" content="https://pastedrops.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Paste Drops" />
-  <meta name="twitter:description" content="Cool the text you shouldn't send - before you send it." />
+  <meta name="twitter:description" content="Cool the text you meant to send - before you send it." />
   <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
   <title>Paste Drops - Cools down your angry texts</title>
   <style>
