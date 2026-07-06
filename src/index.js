@@ -3,20 +3,20 @@ const LANDING_HTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cool the text you shouldn't send — before you send it.">
+  <meta name="description" content="Cool the text you shouldn't send - before you send it.">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paste Drops" />
   <meta property="og:title" content="Paste Drops" />
-  <meta property="og:description" content="Cool the text you shouldn't send — before you send it." />
+  <meta property="og:description" content="Cool the text you shouldn't send - before you send it." />
   <meta property="og:url" content="https://pastedrops.com/" />
   <meta property="og:image" content="https://pastedrops.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Paste Drops" />
-  <meta name="twitter:description" content="Cool the text you shouldn't send — before you send it." />
+  <meta name="twitter:description" content="Cool the text you shouldn't send - before you send it." />
   <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
-  <title>Paste Drops</title>
+  <title>Paste Drops - Cools down your angry texts</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
     
@@ -206,16 +206,16 @@ const APP_HTML = `<!DOCTYPE html>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paste Drops" />
   <meta property="og:title" content="Paste Drops" />
-  <meta property="og:description" content="Cool the text you shouldn't send — before you send it." />
+  <meta property="og:description" content="Cool the text you shouldn't send - before you send it." />
   <meta property="og:url" content="https://pastedrops.com/getapp" />
   <meta property="og:image" content="https://pastedrops.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Paste Drops" />
-  <meta name="twitter:description" content="Cool the text you shouldn't send — before you send it." />
+  <meta name="twitter:description" content="Cool the text you shouldn't send - before you send it." />
   <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
-  <title>Paste Drops</title>
+  <title>Paste Drops - Cools down your angry texts</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
     
@@ -287,10 +287,10 @@ const APP_HTML = `<!DOCTYPE html>
     }
   </style>
   <script>
-    var PLAY_URL = "https://play.google.com/store/apps/details?id=com.pastedrops.app"; 
-    var APP_STORE_URL = "https://pastedrops.com/"; 
+    var PLAY_URL = "https://app.pastedrops.com/"; 
+    var APP_STORE_URL = "https://app.pastedrops.com/"; 
     var ua = navigator.userAgent || "";
-    var dest = "https://pastedrops.com/";
+    var dest = "https://app.pastedrops.com/";
     if (/android/i.test(ua)) dest = PLAY_URL;
     else if (/iphone|ipad|ipod/i.test(ua) || (/Mac/.test(ua) && "ontouchend" in document)) dest = APP_STORE_URL;
     
@@ -302,9 +302,9 @@ const APP_HTML = `<!DOCTYPE html>
     <svg class="spinner-drop" viewBox="0 0 1717 2242" xmlns="http://www.w3.org/2000/svg">
       <path d="M1647.99,745.708C2059.6,918.083 2758.683,1358.959 2758.683,1972.21C2758.683,2392.417 2417.528,2733.572 1997.321,2733.572C1577.114,2733.572 1235.959,2392.417 1235.959,1972.21C1235.959,1358.959 1890.308,1200.235 1647.99,745.708Z" fill="rgb(45,84,232)"/>
     </svg>
-    <div class="status-text">Redirecting to your app store...</div>
+    <div class="status-text">Redirecting to the app...</div>
     <div class="fallback-text">
-      Tap <a href="/" id="fallback-lnk" class="fallback-link">here</a> if you're not redirected.
+      Tap <a href="https://app.pastedrops.com/" id="fallback-lnk" class="fallback-link">here</a> if you're not redirected.
     </div>
   </div>
 </body>
