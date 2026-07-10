@@ -620,27 +620,27 @@ const PRIVACY_HTML = `<!DOCTYPE html>
 
     <div class="section">
       <h2>What Paste Drops does</h2>
-      <p>When you cool a message, the text you enter is sent over the internet to our server and then to Google's Gemini API, which rewrites it and sends the result back. If you use voice input, your recorded audio is sent the same way to be transcribed. That processing is the whole point of the app - without sending it, we can't cool it.</p>
+      <p>When you type or speak a message to cool it, the text is processed via Google's Gemini API (using a free tier plan) to rewrite it. To read the result aloud, the cooled text is sent to the Gemini Flash Text-to-Speech (TTS) API, falling back to OpenAI's TTS on paid API plans when needed. The resulting audio is sent back to the phone for playback.</p>
+    </div>
+
+    <div class="section">
+      <h2>Voice input processing</h2>
+      <p>If you use voice input, the recorded audio is sent to the OpenAI Whisper API to be turned into a text string. That text string is then sent to the Gemini API to be cooled. Audio recordings are transient and are not stored permanently by us or our processors.</p>
     </div>
 
     <div class="section">
       <h2>What we store</h2>
-      <p>We keep anonymous, aggregate counts - like the total number of messages cooled - so we can show global stats. These counts aren't linked to you or to the content of your messages. We don't keep your messages, we don't have user accounts, and we don't build a profile of you.</p>
+      <p>We do not store your text, messages, or voice recordings. Only a global, anonymous conversion count (the total number of messages cooled) is stored on our server to show global stats. A localized set of history and stats is saved strictly on your device only and is never sent or saved anywhere else.</p>
     </div>
 
     <div class="section">
-      <h2>Google's processing</h2>
-      <p>Paste Drops uses Google's Gemini API on a paid plan. Under Google's paid API terms, the text and audio you send are not used to train Google's models - they're processed only to return your result. See Google's API terms for details.</p>
-    </div>
-
-    <div class="section">
-      <h2>Voice input</h2>
-      <p>Your microphone is only used when you enable voice input and tap the mic. The recording is sent for transcription and is not stored permanently by us.</p>
+      <h2>Privacy and API terms</h2>
+      <p>Under the paid and API developer terms of our third-party processors (Google and OpenAI), the text and audio data processed are not used to train models. They are used only to generate your cooled text and audio playback.</p>
     </div>
 
     <div class="section">
       <h2>What we don't do</h2>
-      <p>No ads. No selling your data. No tracking you across other apps or websites.</p>
+      <p>No ads. No selling your data. No tracking you across other apps or websites. No persistent logging of your messages on any server.</p>
     </div>
 
     <div class="section">
