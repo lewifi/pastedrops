@@ -471,6 +471,196 @@ const APP_HTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
+const PRIVACY_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paste Drops Privacy Policy - How we handle your data.">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Paste Drops" />
+  <meta property="og:title" content="Paste Drops - Privacy Policy" />
+  <meta property="og:description" content="Read how Paste Drops respects and protects your privacy." />
+  <meta property="og:url" content="https://pastedrops.com/privacy" />
+  <meta property="og:image" content="https://pastedrops.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Paste Drops - Privacy Policy" />
+  <meta name="twitter:description" content="Read how Paste Drops respects and protects your privacy." />
+  <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
+  <title>Paste Drops - Privacy Policy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #141317;
+      color: #FCFBF9;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      z-index: 1;
+    }
+
+    .glow-orb {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 113, 233, 0.15) 0%, rgba(138, 36, 115, 0.05) 50%, rgba(20, 19, 23, 0) 100%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #FCFBF9;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-drop {
+      width: 24px;
+      height: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .updated {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(252, 251, 249, 0.45);
+    }
+
+    .section {
+      background-color: #1c1a21;
+      border: 1px solid rgba(252, 251, 249, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FCFBF9;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.925rem;
+      color: rgba(252, 251, 249, 0.75);
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(252, 251, 249, 0.45);
+    }
+
+    .footer a {
+      color: rgb(0, 113, 233);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glow-orb"></div>
+    
+    <div class="header">
+      <a href="/" class="logo-link">
+        <svg class="logo-drop" viewBox="0 0 1717 2242" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1647.99,745.708C2059.6,918.083 2758.683,1358.959 2758.683,1972.21C2758.683,2392.417 2417.528,2733.572 1997.321,2733.572C1577.114,2733.572 1235.959,2392.417 1235.959,1972.21C1235.959,1358.959 1890.308,1200.235 1647.99,745.708Z" fill="rgb(0,113,233)"/>
+        </svg>
+        <span>Paste Drops</span>
+      </a>
+      <h1>Privacy Policy</h1>
+      <div class="updated">Last updated: July 2026</div>
+    </div>
+
+    <div class="section">
+      <h2>What Paste Drops does</h2>
+      <p>When you cool a message, the text you enter is sent over the internet to our server and then to Google's Gemini API, which rewrites it and sends the result back. If you use voice input, your recorded audio is sent the same way to be transcribed. That processing is the whole point of the app - without sending it, we can't cool it.</p>
+    </div>
+
+    <div class="section">
+      <h2>What we store</h2>
+      <p>We keep anonymous, aggregate counts - like the total number of messages cooled - so we can show global stats. These counts aren't linked to you or to the content of your messages. We don't keep your messages, we don't have user accounts, and we don't build a profile of you.</p>
+    </div>
+
+    <div class="section">
+      <h2>Google's processing</h2>
+      <p>Paste Drops uses Google's Gemini API on a paid plan. Under Google's paid API terms, the text and audio you send are not used to train Google's models - they're processed only to return your result. See Google's API terms for details.</p>
+    </div>
+
+    <div class="section">
+      <h2>Voice input</h2>
+      <p>Your microphone is only used when you enable voice input and tap the mic. The recording is sent for transcription and is not stored permanently by us.</p>
+    </div>
+
+    <div class="section">
+      <h2>What we don't do</h2>
+      <p>No ads. No selling your data. No tracking you across other apps or websites.</p>
+    </div>
+
+    <div class="section">
+      <h2>Children</h2>
+      <p>Paste Drops isn't directed at children under 13.</p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Questions? Email hello@pastedrops.com.</p>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
+    </div>
+  </div>
+</body>
+</html>
+`;
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -490,6 +680,15 @@ export default {
         headers: { 
           'content-type': 'text/html;charset=UTF-8',
           'cache-control': 'public, max-age=60'
+        }
+      });
+    }
+
+    if (path === '/privacy' || path === '/privacy/') {
+      return new Response(PRIVACY_HTML, {
+        headers: { 
+          'content-type': 'text/html;charset=UTF-8',
+          'cache-control': 'public, max-age=3600'
         }
       });
     }
