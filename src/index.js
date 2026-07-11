@@ -2,6 +2,7 @@ const LANDING_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Cool the text you meant to send - before you send it.">
   <meta property="og:type" content="website" />
@@ -387,10 +388,23 @@ const LANDING_HTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
+const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="580 340 1400 1820" width="100%" height="100%">
+  <g transform="matrix(0.911426,0,0,0.911426,-540.014502,-337.82769)">
+    <path d="M1647.99,745.708C2059.6,918.083 2758.683,1358.959 2758.683,1972.21C2758.683,2392.417 2417.528,2733.572 1997.321,2733.572C1577.114,2733.572 1235.959,2392.417 1235.959,1972.21C1235.959,1358.959 1890.308,1200.235 1647.99,745.708Z" fill="rgb(0,113,233)"/>
+  </g>
+  <g transform="matrix(1.010387,0,0,1.010387,-737.674871,-98.666943)">
+    <path d="M2115.067,1326.418C2115.171,1328.449 2115.224,1330.494 2115.224,1332.55C2115.224,1397.622 2062.394,1450.451 1997.323,1450.451C1932.251,1450.451 1879.422,1397.622 1879.422,1332.55C1879.422,1273.172 1923.412,1223.986 1980.553,1215.835C1991.016,1195.985 1994.81,1173.389 1977.287,1134.829C2046.256,1183.552 2115.224,1227.964 2115.224,1321.098C2115.224,1322.884 2115.171,1324.658 2115.067,1326.418Z" fill="rgb(235,235,235)"/>
+  </g>
+  <g transform="matrix(1.010387,0,0,1.010387,-784.112183,-199.442883)">
+    <path d="M1691.577,1661.866L1768.124,1661.866C1768.124,1813.831 1891.317,1937.024 2043.283,1937.024C2195.249,1937.024 2318.441,1813.831 2318.441,1661.866L2394.989,1661.866C2394.989,1856.108 2237.525,2013.572 2043.283,2013.572C1849.041,2013.572 1691.577,1856.108 1691.577,1661.866Z" fill="rgb(235,235,235)"/>
+  </g>
+</svg>`;
+
 const APP_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paste Drops" />
@@ -503,6 +517,7 @@ const PRIVACY_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Paste Drops Privacy Policy - How we handle your data.">
   <meta property="og:type" content="website" />
@@ -706,6 +721,7 @@ const DELETEDATA_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="How to delete your Paste Drops data.">
   <meta property="og:type" content="website" />
@@ -885,6 +901,15 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname;
+
+    if (path === '/favicon.svg' || path === '/favicon.ico') {
+      return new Response(FAVICON_SVG, {
+        headers: {
+          'content-type': 'image/svg+xml',
+          'cache-control': 'public, max-age=86400'
+        }
+      });
+    }
 
     if (path === '/' || path === '/index.html') {
       return new Response(LANDING_HTML, {
