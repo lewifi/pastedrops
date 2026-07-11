@@ -639,13 +639,189 @@ const PRIVACY_HTML = `<!DOCTYPE html>
     </div>
 
     <div class="section">
+      <h2>Analytics</h2>
+      <p>The mobile app uses Google Analytics for Firebase to collect anonymous usage statistics — things like app opens, screens viewed, device model, country, and your device's advertising identifier. We use this to understand how the app is used and to measure ads we may run to promote Paste Drops. Analytics never sees your messages, text, or audio. You can reset or delete your device's advertising ID at any time in your device settings (Settings &rarr; Privacy &rarr; Ads). For details on how Google processes this data, see <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+    </div>
+
+    <div class="section">
       <h2>What we don't do</h2>
-      <p>No ads. No selling your data. No tracking you across other apps or websites. No persistent logging of your messages on any server.</p>
+      <p>No ads inside the app. No selling your data. No persistent logging of your messages on any server.</p>
     </div>
 
     <div class="section">
       <h2>Children</h2>
       <p>Paste Drops isn't directed at children under 13.</p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Questions? Email hello@pastedrops.com.</p>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
+    </div>
+  </div>
+</body>
+</html>
+`;
+
+const DELETEDATA_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to delete your Paste Drops data.">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Paste Drops" />
+  <meta property="og:title" content="Paste Drops - Delete Your Data" />
+  <meta property="og:description" content="How to delete your Paste Drops data." />
+  <meta property="og:url" content="https://pastedrops.com/deletedata" />
+  <meta property="og:image" content="https://pastedrops.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Paste Drops - Delete Your Data" />
+  <meta name="twitter:description" content="How to delete your Paste Drops data." />
+  <meta name="twitter:image" content="https://pastedrops.com/og-image.png" />
+  <title>Paste Drops - Delete Your Data</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #141317;
+      color: #FCFBF9;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 3rem 1.5rem;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      z-index: 1;
+    }
+
+    .glow-orb {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 113, 233, 0.15) 0%, rgba(138, 36, 115, 0.05) 50%, rgba(20, 19, 23, 0) 100%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #FCFBF9;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-drop {
+      width: 24px;
+      height: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      background-color: #1c1a21;
+      border: 1px solid rgba(252, 251, 249, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FCFBF9;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.925rem;
+      color: rgba(252, 251, 249, 0.75);
+      line-height: 1.6;
+    }
+
+    p + p {
+      margin-top: 0.75rem;
+    }
+
+    a {
+      color: rgb(0, 113, 233);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(252, 251, 249, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glow-orb"></div>
+
+    <div class="header">
+      <a href="/" class="logo-link">
+        <svg class="logo-drop" viewBox="0 0 1717 2242" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1647.99,745.708C2059.6,918.083 2758.683,1358.959 2758.683,1972.21C2758.683,2392.417 2417.528,2733.572 1997.321,2733.572C1577.114,2733.572 1235.959,2392.417 1235.959,1972.21C1235.959,1358.959 1890.308,1200.235 1647.99,745.708Z" fill="rgb(0,113,233)"/>
+        </svg>
+        <span>Paste Drops</span>
+      </a>
+      <h1>Delete Your Data</h1>
+    </div>
+
+    <div class="section">
+      <h2>Your data lives on your device</h2>
+      <p>Paste Drops has no accounts and stores nothing about you on our servers. Your messages, voice recordings, history, and stats exist only on your device. The single thing our server keeps is a global, anonymous counter of how many messages have been cooled in total — it contains nothing about you and cannot be linked to you.</p>
+    </div>
+
+    <div class="section">
+      <h2>How to delete everything</h2>
+      <p>On Android, go to Settings &rarr; Apps &rarr; Paste Drops &rarr; Storage &rarr; Clear data. Or simply uninstall the app.</p>
+      <p>Either way, all of your history, stats, and preferences are permanently deleted. There is nothing to delete anywhere else — no server-side copy of your data exists.</p>
+    </div>
+
+    <div class="section">
+      <h2>Anonymous analytics</h2>
+      <p>The app collects anonymous usage statistics via Google Analytics for Firebase (app opens, screens viewed — never your messages). These are not linked to your identity and expire automatically. See our <a href="/privacy">Privacy Policy</a> for details.</p>
     </div>
 
     <div class="section">
@@ -680,6 +856,15 @@ export default {
         headers: { 
           'content-type': 'text/html;charset=UTF-8',
           'cache-control': 'public, max-age=60'
+        }
+      });
+    }
+
+    if (path === '/deletedata' || path === '/deletedata/') {
+      return new Response(DELETEDATA_HTML, {
+        headers: {
+          'content-type': 'text/html;charset=UTF-8',
+          'cache-control': 'public, max-age=3600'
         }
       });
     }
