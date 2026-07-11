@@ -649,8 +649,8 @@ const PRIVACY_HTML = `<!DOCTYPE html>
     </div>
 
     <div class="section">
-      <h2>Children</h2>
-      <p>Paste Drops isn't directed at children under 16.</p>
+      <h2>Age restriction</h2>
+      <p>Paste Drops isn't directed at persons under 16.</p>
     </div>
 
     <div class="section">
