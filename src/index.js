@@ -236,6 +236,28 @@ const LANDING_HTML = `<!DOCTYPE html>
       letter-spacing: 0.15em;
       color: rgba(252, 251, 249, 0.45);
     }
+
+    .site-footer {
+      margin-top: 3.5rem;
+      font-size: 0.75rem;
+      color: rgba(252, 251, 249, 0.25);
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .site-footer a {
+      color: rgba(252, 251, 249, 0.45);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .site-footer a:hover {
+      color: #FCFBF9;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -284,6 +306,12 @@ const LANDING_HTML = `<!DOCTYPE html>
 
     <span id="btn-get-app" class="cta-button disabled">Get the app</span>
     <span class="coming-soon">Coming soon</span>
+  </div>
+
+  <div class="site-footer">
+    <a href="/privacy">Privacy Policy</a>
+    <span>·</span>
+    <a href="/deletedata">Delete Data</a>
   </div>
 
   <script>
