@@ -709,7 +709,7 @@ const PRIVACY_HTML = `<!DOCTYPE html>
 
     <div class="section">
       <h2>Analytics</h2>
-      <p>The mobile app uses Google Analytics for Firebase to collect anonymous usage statistics — things like app opens, screens viewed, device model, country, and your device's advertising identifier. We use this to understand how the app is used and to measure ads we may run to promote Paste Drops. Analytics never sees your messages, text, or audio. You can reset or delete your device's advertising ID at any time in your device settings (Settings &rarr; Privacy &rarr; Ads). For details on how Google processes this data, see <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+      <p>The mobile app collects anonymous usage statistics on our own servers (Cloudflare) — things like app opens, screens viewed, which features are used, platform and app version, and whether a request errored. This is tied only to a random identifier the app generates for itself; it is never linked to your identity, a Google or advertising ID, or any account, and it never includes your messages, text, or audio. We use it purely to understand how the app is used and to fix problems. We no longer use Google Analytics for Firebase or any third-party analytics.</p>
     </div>
 
     <div class="section">
@@ -889,7 +889,7 @@ const DELETEDATA_HTML = `<!DOCTYPE html>
 
     <div class="section">
       <h2>Anonymous analytics</h2>
-      <p>The app collects anonymous usage statistics via Google Analytics for Firebase (app opens, screens viewed — never your messages). These are not linked to your identity and expire automatically. See our <a href="/privacy">Privacy Policy</a> for details.</p>
+      <p>The app collects anonymous usage statistics on our own servers (app opens, screens viewed — never your messages). These are tied only to a random, self-generated identifier — never to you — and never include your content. See our <a href="/privacy">Privacy Policy</a> for details.</p>
     </div>
 
     <div class="section">
