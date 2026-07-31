@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pastedrops.app",
+      "sha256_cert_fingerprints": [
+        "8B:B1:47:EF:35:09:03:0A:6A:C1:9B:4B:07:45:8E:0E:AA:4E:C2:D1:05:45:FB:D6:0A:AE:E7:0D:81:47:F7:22"
+      ]
+    }
+  }
+]
