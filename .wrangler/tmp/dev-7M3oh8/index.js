@@ -1,4 +1,34 @@
-const NEW_MASCOT_DROP_SVG = `<svg class="logo-drop" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+
+// .wrangler/tmp/bundle-ttR4v1/checked-fetch.js
+var urls = /* @__PURE__ */ new Set();
+function checkURL(request, init) {
+  const url = request instanceof URL ? request : new URL(
+    (typeof request === "string" ? new Request(request, init) : request).url
+  );
+  if (url.port && url.port !== "443" && url.protocol === "https:") {
+    if (!urls.has(url.toString())) {
+      urls.add(url.toString());
+      console.warn(
+        `WARNING: known issue with \`fetch()\` requests to custom HTTPS ports in published Workers:
+ - ${url.toString()} - the custom port will be ignored when the Worker is published using the \`wrangler deploy\` command.
+`
+      );
+    }
+  }
+}
+__name(checkURL, "checkURL");
+globalThis.fetch = new Proxy(globalThis.fetch, {
+  apply(target, thisArg, argArray) {
+    const [request, init] = argArray;
+    checkURL(request, init);
+    return Reflect.apply(target, thisArg, argArray);
+  }
+});
+
+// src/index.js
+var NEW_MASCOT_DROP_SVG = `<svg class="logo-drop" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="DropGrad" cx="468.07" cy="459.96" fx="468.07" fy="459.96" r="384.54" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#37bef5"/>
@@ -19,8 +49,7 @@ const NEW_MASCOT_DROP_SVG = `<svg class="logo-drop" viewBox="0 0 1024 1024" xmln
     <path d="M422.3,184.98s40.33,50.49,19.98,134.19c-19.89,81.76-77.85,134.33-77.85,134.33,0,0-73.07,11.55-29.64-51.67,43.44-63.23,114.35-91.14,87.51-216.85Z" fill="url(#DropHighlight)" />
   </g>
 </svg>`;
-
-const NEW_STACKED_LOGO_SVG = `<svg class="logo-svg" viewBox="0 0 1091.49 1080" version="1.1" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+var NEW_STACKED_LOGO_SVG = `<svg class="logo-svg" viewBox="0 0 1091.49 1080" version="1.1" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
   <defs>
     <style>
       .st0 { opacity: .5; }
@@ -66,8 +95,7 @@ const NEW_STACKED_LOGO_SVG = `<svg class="logo-svg" viewBox="0 0 1091.49 1080" v
     <path class="st6" d="M270.36,112.62s24.86,31.12,12.31,82.7-47.98,82.78-47.98,82.78c0,0-45.03,7.12-18.26-31.84,26.77-38.96,70.47-56.17,53.93-133.64Z"/>
   </g>
 </svg>`;
-
-const LANDING_HTML = `<!DOCTYPE html>
+var LANDING_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -327,7 +355,7 @@ const LANDING_HTML = `<!DOCTYPE html>
 
   <div class="site-footer">
     <a href="/privacy">Privacy Policy</a>
-    <span>·</span>
+    <span>\xB7</span>
     <a href="/deletedata">Delete Data</a>
   </div>
 
@@ -389,13 +417,11 @@ const LANDING_HTML = `<!DOCTYPE html>
         }, 420);
       });
     })();
-  </script>
+  <\/script>
 </body>
 </html>`;
-
-const FAVICON_SVG = `${NEW_MASCOT_DROP_SVG.replace('class="logo-drop"', 'width="100%" height="100%"')}`;
-
-const APP_HTML = `<!DOCTYPE html>
+var FAVICON_SVG = `${NEW_MASCOT_DROP_SVG.replace('class="logo-drop"', 'width="100%" height="100%"')}`;
+var APP_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -527,7 +553,7 @@ const APP_HTML = `<!DOCTYPE html>
         location.replace(dest);
       }, 50);
     }
-  </script>
+  <\/script>
 </head>
 <body>
   <div class="redirect-container">
@@ -547,8 +573,7 @@ const APP_HTML = `<!DOCTYPE html>
   </div>
 </body>
 </html>`;
-
-const PRIVACY_HTML = `<!DOCTYPE html>
+var PRIVACY_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -721,7 +746,7 @@ const PRIVACY_HTML = `<!DOCTYPE html>
 
     <div class="section">
       <h2>Analytics</h2>
-      <p>The mobile app collects anonymous usage statistics on our own servers (Cloudflare) — things like app opens, screens viewed, which features are used, platform and app version, and whether a request errored. This is tied only to a random identifier the app generates for itself; it is never linked to your identity, a Google or advertising ID, or any account, and it never includes your messages, text, or audio. We use it purely to understand how the app is used and to fix problems. We no longer use Google Analytics for Firebase or any third-party analytics.</p>
+      <p>The mobile app collects anonymous usage statistics on our own servers (Cloudflare) \u2014 things like app opens, screens viewed, which features are used, platform and app version, and whether a request errored. This is tied only to a random identifier the app generates for itself; it is never linked to your identity, a Google or advertising ID, or any account, and it never includes your messages, text, or audio. We use it purely to understand how the app is used and to fix problems. We no longer use Google Analytics for Firebase or any third-party analytics.</p>
     </div>
 
     <div class="section">
@@ -740,14 +765,13 @@ const PRIVACY_HTML = `<!DOCTYPE html>
     </div>
 
     <div class="footer">
-      <p>© 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
+      <p>\xA9 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
     </div>
   </div>
 </body>
 </html>
 `;
-
-const DELETEDATA_HTML = `<!DOCTYPE html>
+var DELETEDATA_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -896,12 +920,12 @@ const DELETEDATA_HTML = `<!DOCTYPE html>
     <div class="section">
       <h2>How to delete everything</h2>
       <p>On Android, go to Settings &rarr; Apps &rarr; Paste Drops &rarr; Storage &rarr; Clear data. Or simply uninstall the app.</p>
-      <p>Either way, all of your history, stats, and preferences are permanently deleted. There is nothing to delete anywhere else — no server-side copy of your data exists.</p>
+      <p>Either way, all of your history, stats, and preferences are permanently deleted. There is nothing to delete anywhere else \u2014 no server-side copy of your data exists.</p>
     </div>
 
     <div class="section">
       <h2>Anonymous analytics</h2>
-      <p>The app collects anonymous usage statistics on our own servers (app opens, screens viewed — never your messages). These are tied only to a random, self-generated identifier — never to you — and never include your content. See our <a href="/privacy">Privacy Policy</a> for details.</p>
+      <p>The app collects anonymous usage statistics on our own servers (app opens, screens viewed \u2014 never your messages). These are tied only to a random, self-generated identifier \u2014 never to you \u2014 and never include your content. See our <a href="/privacy">Privacy Policy</a> for details.</p>
     </div>
 
     <div class="section">
@@ -910,46 +934,38 @@ const DELETEDATA_HTML = `<!DOCTYPE html>
     </div>
 
     <div class="footer">
-      <p>© 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
+      <p>\xA9 2026 Paste Drops. All rights reserved. <a href="/">Back to home</a></p>
     </div>
   </div>
 </body>
 </html>
 `;
-
-// The app renders the legal pages natively (no webview in the build), so it
-// fetches them as JSON. The JSON is parsed straight out of the HTML above,
-// keeping the website and the app in sync by construction: edit the HTML,
-// both surfaces update.
-const stripTags = (s) => s.replace(/<[^>]+>/g, '');
-const decodeEntities = (s) => s
-  .replace(/&rarr;/g, '→').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ')
-  .replace(/\s+/g, ' ').trim();
-
+var stripTags = /* @__PURE__ */ __name((s) => s.replace(/<[^>]+>/g, ""), "stripTags");
+var decodeEntities = /* @__PURE__ */ __name((s) => s.replace(/&rarr;/g, "\u2192").replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim(), "decodeEntities");
 function extractSections(html) {
   const out = [];
   const re = /<h2>([\s\S]*?)<\/h2>([\s\S]*?)<\/div>/g;
   let m;
-  while ((m = re.exec(html))) {
+  while (m = re.exec(html)) {
     const paras = [];
     const pre = /<p>([\s\S]*?)<\/p>/g;
     let p;
-    while ((p = pre.exec(m[2]))) paras.push(decodeEntities(stripTags(p[1])));
-    if (paras.length) out.push({ h: decodeEntities(stripTags(m[1])), b: paras.join('\n\n') });
+    while (p = pre.exec(m[2])) paras.push(decodeEntities(stripTags(p[1])));
+    if (paras.length) out.push({ h: decodeEntities(stripTags(m[1])), b: paras.join("\n\n") });
   }
   return out;
 }
-
+__name(extractSections, "extractSections");
 function legalJson() {
-  const updated = (/Last updated:\s*([^<]+)</.exec(PRIVACY_HTML) || [])[1] || '';
+  const updated = (/Last updated:\s*([^<]+)</.exec(PRIVACY_HTML) || [])[1] || "";
   return {
     updated: updated.trim(),
     privacy: extractSections(PRIVACY_HTML),
-    deletedata: extractSections(DELETEDATA_HTML),
+    deletedata: extractSections(DELETEDATA_HTML)
   };
 }
-
-const ADS_INTRO_HTML = `<!DOCTYPE html>
+__name(legalJson, "legalJson");
+var ADS_INTRO_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1461,11 +1477,10 @@ const ADS_INTRO_HTML = `<!DOCTYPE html>
         }, 700);
       }
     })();
-  </script>
+  <\/script>
 </body>
 </html>`;
-
-const ADS_LOGO_HTML = `<!DOCTYPE html>
+var ADS_LOGO_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1774,93 +1789,258 @@ const ADS_LOGO_HTML = `<!DOCTYPE html>
         }, 420);
       });
     })();
-  </script>
+  <\/script>
 </body>
 </html>`;
-
-export default {
+var src_default = {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname;
-
-    if (path === '/api/legal' && request.method === 'GET') {
+    if (path === "/api/legal" && request.method === "GET") {
       return new Response(JSON.stringify(legalJson()), {
         headers: {
-          'content-type': 'application/json',
-          'cache-control': 'public, max-age=3600',
-          'Access-Control-Allow-Origin': '*',
+          "content-type": "application/json",
+          "cache-control": "public, max-age=3600",
+          "Access-Control-Allow-Origin": "*"
         }
       });
     }
-
-    if (path === '/favicon.svg' || path === '/favicon.ico') {
+    if (path === "/favicon.svg" || path === "/favicon.ico") {
       return new Response(FAVICON_SVG, {
         headers: {
-          'content-type': 'image/svg+xml',
-          'cache-control': 'public, max-age=86400'
+          "content-type": "image/svg+xml",
+          "cache-control": "public, max-age=86400"
         }
       });
     }
-
-    if (path === '/' || path === '/index.html') {
+    if (path === "/" || path === "/index.html") {
       return new Response(LANDING_HTML, {
-        headers: { 
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'public, max-age=3600'
+        headers: {
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "public, max-age=3600"
         }
       });
     }
-
-    if (path === '/getapp' || path === '/getapp/') {
+    if (path === "/getapp" || path === "/getapp/") {
       return new Response(APP_HTML, {
-        headers: { 
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'public, max-age=60'
+        headers: {
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "public, max-age=60"
         }
       });
     }
-
-    if (path === '/deletedata' || path === '/deletedata/') {
+    if (path === "/deletedata" || path === "/deletedata/") {
       return new Response(DELETEDATA_HTML, {
         headers: {
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'public, max-age=3600'
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "public, max-age=3600"
         }
       });
     }
-
-    if (path === '/privacy' || path === '/privacy/') {
+    if (path === "/privacy" || path === "/privacy/") {
       return new Response(PRIVACY_HTML, {
-        headers: { 
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'public, max-age=3600'
+        headers: {
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "public, max-age=3600"
         }
       });
     }
-
-    if (path === '/ads/intro' || path === '/ads/intro/') {
+    if (path === "/ads/intro" || path === "/ads/intro/") {
       return new Response(ADS_INTRO_HTML, {
         headers: {
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'no-store'
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "no-store"
         }
       });
     }
-
-    if (path === '/ads/logo' || path === '/ads/logo/') {
+    if (path === "/ads/logo" || path === "/ads/logo/") {
       return new Response(ADS_LOGO_HTML, {
         headers: {
-          'content-type': 'text/html;charset=UTF-8',
-          'cache-control': 'no-store'
+          "content-type": "text/html;charset=UTF-8",
+          "cache-control": "no-store"
         }
       });
     }
-
-    // Fall back to static assets via the ASSETS binding
     if (env.ASSETS) {
       return env.ASSETS.fetch(request);
     }
-
-    return new Response('Not Found', { status: 404 });
+    return new Response("Not Found", { status: 404 });
   }
 };
+
+// ../../../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
+var drainBody = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } finally {
+    try {
+      if (request.body !== null && !request.bodyUsed) {
+        const reader = request.body.getReader();
+        while (!(await reader.read()).done) {
+        }
+      }
+    } catch (e) {
+      console.error("Failed to drain the unused request body.", e);
+    }
+  }
+}, "drainBody");
+var middleware_ensure_req_body_drained_default = drainBody;
+
+// ../../../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
+function reduceError(e) {
+  return {
+    name: e?.name,
+    message: e?.message ?? String(e),
+    stack: e?.stack,
+    cause: e?.cause === void 0 ? void 0 : reduceError(e.cause)
+  };
+}
+__name(reduceError, "reduceError");
+var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
+  try {
+    return await middlewareCtx.next(request, env);
+  } catch (e) {
+    const error = reduceError(e);
+    return Response.json(error, {
+      status: 500,
+      headers: { "MF-Experimental-Error-Stack": "true" }
+    });
+  }
+}, "jsonError");
+var middleware_miniflare3_json_error_default = jsonError;
+
+// .wrangler/tmp/bundle-ttR4v1/middleware-insertion-facade.js
+var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
+  middleware_ensure_req_body_drained_default,
+  middleware_miniflare3_json_error_default
+];
+var middleware_insertion_facade_default = src_default;
+
+// ../../../../../AppData/Roaming/npm/node_modules/wrangler/templates/middleware/common.ts
+var __facade_middleware__ = [];
+function __facade_register__(...args) {
+  __facade_middleware__.push(...args.flat());
+}
+__name(__facade_register__, "__facade_register__");
+function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
+  const [head, ...tail] = middlewareChain;
+  const middlewareCtx = {
+    dispatch,
+    next(newRequest, newEnv) {
+      return __facade_invokeChain__(newRequest, newEnv, ctx, dispatch, tail);
+    }
+  };
+  return head(request, env, ctx, middlewareCtx);
+}
+__name(__facade_invokeChain__, "__facade_invokeChain__");
+function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
+  return __facade_invokeChain__(request, env, ctx, dispatch, [
+    ...__facade_middleware__,
+    finalMiddleware
+  ]);
+}
+__name(__facade_invoke__, "__facade_invoke__");
+
+// .wrangler/tmp/bundle-ttR4v1/middleware-loader.entry.ts
+var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
+  constructor(scheduledTime, cron, noRetry) {
+    this.scheduledTime = scheduledTime;
+    this.cron = cron;
+    this.#noRetry = noRetry;
+  }
+  scheduledTime;
+  cron;
+  static {
+    __name(this, "__Facade_ScheduledController__");
+  }
+  #noRetry;
+  noRetry() {
+    if (!(this instanceof ___Facade_ScheduledController__)) {
+      throw new TypeError("Illegal invocation");
+    }
+    this.#noRetry();
+  }
+};
+function wrapExportedHandler(worker) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return worker;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
+    if (worker.fetch === void 0) {
+      throw new Error("Handler does not export a fetch() function.");
+    }
+    return worker.fetch(request, env, ctx);
+  }, "fetchDispatcher");
+  return {
+    ...worker,
+    fetch(request, env, ctx) {
+      const dispatcher = /* @__PURE__ */ __name(function(type, init) {
+        if (type === "scheduled" && worker.scheduled !== void 0) {
+          const controller = new __Facade_ScheduledController__(
+            Date.now(),
+            init.cron ?? "",
+            () => {
+            }
+          );
+          return worker.scheduled(controller, env, ctx);
+        }
+      }, "dispatcher");
+      return __facade_invoke__(request, env, ctx, dispatcher, fetchDispatcher);
+    }
+  };
+}
+__name(wrapExportedHandler, "wrapExportedHandler");
+function wrapWorkerEntrypoint(klass) {
+  if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
+    return klass;
+  }
+  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
+    __facade_register__(middleware);
+  }
+  return class extends klass {
+    #fetchDispatcher = /* @__PURE__ */ __name((request, env, ctx) => {
+      this.env = env;
+      this.ctx = ctx;
+      if (super.fetch === void 0) {
+        throw new Error("Entrypoint class does not define a fetch() function.");
+      }
+      return super.fetch(request);
+    }, "#fetchDispatcher");
+    #dispatcher = /* @__PURE__ */ __name((type, init) => {
+      if (type === "scheduled" && super.scheduled !== void 0) {
+        const controller = new __Facade_ScheduledController__(
+          Date.now(),
+          init.cron ?? "",
+          () => {
+          }
+        );
+        return super.scheduled(controller);
+      }
+    }, "#dispatcher");
+    fetch(request) {
+      return __facade_invoke__(
+        request,
+        this.env,
+        this.ctx,
+        this.#dispatcher,
+        this.#fetchDispatcher
+      );
+    }
+  };
+}
+__name(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
+var WRAPPED_ENTRY;
+if (typeof middleware_insertion_facade_default === "object") {
+  WRAPPED_ENTRY = wrapExportedHandler(middleware_insertion_facade_default);
+} else if (typeof middleware_insertion_facade_default === "function") {
+  WRAPPED_ENTRY = wrapWorkerEntrypoint(middleware_insertion_facade_default);
+}
+var middleware_loader_entry_default = WRAPPED_ENTRY;
+export {
+  __INTERNAL_WRANGLER_MIDDLEWARE__,
+  middleware_loader_entry_default as default
+};
+//# sourceMappingURL=index.js.map
