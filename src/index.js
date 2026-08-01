@@ -297,6 +297,29 @@ const LANDING_HTML = `<!DOCTYPE html>
       transform: translateY(0) scale(0.98);
     }
 
+    /* Secondary trust signal under the CTA: proof this is a real, store-listed
+       app, which the gradient button cannot say about itself. Official Google
+       Play artwork - do not recolour, crop or round the corners, and keep it
+       above their minimum size. The primary CTA stays /getapp so it can still
+       redirect by platform when iOS lands. */
+    .play-badge {
+      display: block;
+      width: fit-content;
+      margin: 1.25rem auto 0;
+      line-height: 0;
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .play-badge img {
+      display: block;
+      height: 60px;
+      width: auto;
+    }
+
+    .play-badge:hover {
+      transform: translateY(-2px);
+    }
+
     .site-footer {
       margin-top: 3.5rem;
       font-size: 0.75rem;
@@ -331,6 +354,12 @@ const LANDING_HTML = `<!DOCTYPE html>
     <div class="tagline">the text you meant to send.</div>
 
     <a href="/getapp" id="btn-get-app" class="cta-button">Get the app</a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.pastedrops.app"
+       class="play-badge" target="_blank" rel="noopener"
+       aria-label="Get it on Google Play">
+      <img src="/google-play-badge.png" alt="Get it on Google Play">
+    </a>
   </div>
 
   <div class="site-footer">
