@@ -1,0 +1,25 @@
+# --- wrangler local state (NEVER commit) ---
+# .wrangler/cache holds your Cloudflare account id and a cf.json request blob
+# containing your city, postcode, lat/long and ISP. .wrangler/tmp is build scratch.
+.wrangler/
+
+# --- node ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# --- secrets ---
+.dev.vars
+.env
+.env.*
+*.key
+
+# --- build output ---
+dist/
+
+# --- os / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
