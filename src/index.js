@@ -541,7 +541,7 @@ const APP_HTML = `<!DOCTYPE html>
         var lnk = document.getElementById('fallback-lnk');
         if (lnk) lnk.href = dest;
         location.replace(dest);
-      }, 50);
+      }, 300);
     }
   </script>
 </head>
