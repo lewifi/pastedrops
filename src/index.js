@@ -584,11 +584,14 @@ const APP_HTML = `<!DOCTYPE html>
   </div>
   <div class="ios-container">
     ${NEW_MASCOT_DROP_SVG.replace('class="logo-drop"', 'class="ios-drop"')}
-    <div class="status-text">iOS app coming soon</div>
+    <div class="status-text">Use Paste Drops right now</div>
     <div class="fallback-text">
-      Paste Drops is on Android now. Own an Android device too? You can <a href="https://play.google.com/store/apps/details?id=com.pastedrops.app" class="fallback-link">install it remotely</a> from here.
+      No install needed - <a href="https://app.pastedrops.com" class="fallback-link">open it in your browser</a>. The native iOS app is coming soon.
     </div>
-    <span class="ios-badge">We'll let you know</span>
+    <div class="fallback-text">
+      On Android too? You can <a href="https://play.google.com/store/apps/details?id=com.pastedrops.app" class="fallback-link">install it from Google Play</a>.
+    </div>
+    <span class="ios-badge">iOS app: we'll let you know</span>
   </div>
 </body>
 </html>`;
