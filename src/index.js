@@ -271,11 +271,23 @@ const LANDING_HTML = `<!DOCTYPE html>
       margin-top: 1.5rem;
     }
 
+    .cta-container {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
     /* CTA Button - Pill Shaped (no semi-rounded corners rule) */
     .cta-button {
-      display: inline-block;
-      margin-top: 3.5rem;
-      padding: 0.95rem 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      padding: 0 2.2rem;
       font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -284,8 +296,21 @@ const LANDING_HTML = `<!DOCTYPE html>
       text-decoration: none;
       background: linear-gradient(135deg, rgb(0,113,233) 0%, rgb(48,86,192) 42%, rgb(138,36,115) 57%, rgb(183,11,76) 61%, rgb(201,0,60) 100%);
       border-radius: 999px;
-      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       box-shadow: 0 10px 30px rgba(45, 84, 232, 0.2);
+    }
+
+    .cta-button.secondary {
+      background: rgba(252, 251, 249, 0.05);
+      border: 2px solid rgba(252, 251, 249, 0.15);
+      color: #FCFBF9;
+      box-shadow: none;
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(252, 251, 249, 0.1);
+      border-color: rgba(252, 251, 249, 0.35);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     .cta-button:hover {
@@ -317,6 +342,25 @@ const LANDING_HTML = `<!DOCTYPE html>
     }
 
     .play-badge:hover {
+      transform: translateY(-2px);
+    }
+
+    .validation-badge {
+      display: block;
+      width: fit-content;
+      margin-top: 2rem;
+      line-height: 0;
+      opacity: 0.85;
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
+      z-index: 10;
+    }
+
+    .validation-badge img {
+      display: block;
+    }
+
+    .validation-badge:hover {
+      opacity: 1;
       transform: translateY(-2px);
     }
 
@@ -353,7 +397,10 @@ const LANDING_HTML = `<!DOCTYPE html>
 
     <div class="tagline">the text you meant to send.</div>
 
-    <a href="/getapp" id="btn-get-app" class="cta-button">Get the app</a>
+    <div class="cta-container">
+      <a href="/getapp" id="btn-get-app" class="cta-button">Get the app</a>
+      <a href="https://app.pastedrops.com" id="btn-open-web" class="cta-button secondary" target="_blank" rel="noopener">Open on Web</a>
+    </div>
 
     <a href="https://play.google.com/store/apps/details?id=com.pastedrops.app"
        class="play-badge" target="_blank" rel="noopener"
@@ -361,6 +408,12 @@ const LANDING_HTML = `<!DOCTYPE html>
       <img src="/google-play-badge.png" alt="Get it on Google Play">
     </a>
   </div>
+
+  <a href="https://validatehunt.com/p/paste-drops?utm_source=badge"
+     class="validation-badge" target="_blank" rel="noopener">
+    <img src="https://validatehunt.com/api/badge/paste-drops" alt="Paste Drops — scored —/10 on ValidateHunt"
+         width="240" height="54" />
+  </a>
 
   <div class="site-footer">
     <a href="/privacy">Privacy Policy</a>
